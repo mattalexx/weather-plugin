@@ -9,4 +9,4 @@ A plugin for CakePHP that provides access to National Oceanic and Atmospheric Ad
 
 		$airportCode = 'KSKX';
 		$this->loadModel('Weather.WeatherForecast');
-		$weather = $this->WeatherForecast->daysTemperature($airportCode);
+		$weather = $this->WeatherForecast->getWeather($airportCode);

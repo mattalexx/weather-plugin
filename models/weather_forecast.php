@@ -5,7 +5,7 @@ class WeatherForecast extends AppModel
 	public $useTable = false;
 	public $client = null;
 
-	public function daysTemperature($airport)
+	public function getWeather($airport)
 	{
 		$cacheKey = 'weather';
 		$data = Cache::read($cacheKey, 'weather');
