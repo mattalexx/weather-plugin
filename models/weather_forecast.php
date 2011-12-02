@@ -5,10 +5,10 @@ class WeatherForecast extends AppModel
 	public $useTable = false;
 	public $client = null;
 
-	public function getWeather($airport)
+	public function getWeather($airport, $cacheConfig = 'default')
 	{
 		$cacheKey = 'weather';
-		$data = Cache::read($cacheKey, 'weather');
+		$data = Cache::read($cacheKey, $cacheConfig);
 		if (!empty($data))
 			return $data;
 
@@ -32,7 +32,7 @@ class WeatherForecast extends AppModel
 			$data['api_timestamp'] = strtotime($responseData2['observation_time_rfc822']);
 			$data['response'] = $responseData;
 
-			Cache::write($cacheKey, $data, 'weather');
+			Cache::write($cacheKey, $data, $cacheConfig);
 		} catch(Exception $e) {
 			return null;
 		}
